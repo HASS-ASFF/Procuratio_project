@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block 'title' %}<title>Procuratio | Produits</title>{% endblock  %}
+
+{% block 'content' %}
+
+     <section class="section-lg bg-periglacial-blue text-center">
+              <div class="shell">
+                <div class="range range-sm-center range-50">
+                  <div class="cell-xs-12">
+                    <h2>Nos Produits </h2>
+                    <div class="p text-width-medium">
+                      <p class="big">Découvrez une expérience beauté exceptionnelle avec les services de notre salon Procuratio !</p>
+                    </div>
+                  </div>
+                  <div class="cell-xs-12">
+                    <div class="range range-30">
+                        {% for p in produits %}
+                      <div class="cell-xs-6 cell-md-3">
+                        <article class="card-service">
+                            {% if p.photo %}
+                            <img class="card-service-image" src="{{ p.photo.url }}" alt="" width="70" height="62"/>
+                            {% endif %}
+                          <p class="card-service-title">{{ p.nom }}</p>
+                          <p class="card-service-title">{{ p.type }}</p>
+                          <p class="card-service-price"><small>€</small>{{ p.prix }}</p>
+
+                          <input type="hidden" class="product-price-{{p.id}}"  value="{{p.prix}}" />
+                          <input type="hidden" class="product-image-{{p.id}}"  value="{{p.photo.url}}" />
+                          <input type="hidden" class="product-id-{{p.id}}" value="{{p.id}}" />
+                          <input type="hidden" class="product-qty-{{p.id}}" value="1" />
+		                  <input type="hidden" class="product-title-{{p.id}}" value="{{p.nom}}" />
+                          <a data-index="{{p.id}}" class="btn btn-primary add-to-cart">Ajouter au panier</a>
+                        </article>
+                      </div>
+                        {% endfor %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+{% endblock %}

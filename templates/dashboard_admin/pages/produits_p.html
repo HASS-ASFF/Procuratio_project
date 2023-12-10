@@ -1,0 +1,44 @@
+{% extends 'dashboard_admin/index.html' %}
+
+{% block 'title' %}<title>ProcuratioAdmin - Produits</title>{% endblock %}
+
+{% block 'content' %}
+
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Listes Produits</h6>
+                        <td><a class="btn btn-sm btn-outline-primary" href="{% url 'ajouterproduit' %}">Ajouter un produit</a></td>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Marque</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Quantité</th>
+                                    <th scope="col">Prix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for p in produits %}
+                                <tr>
+                                    <td>{{ p.nom }}</td>
+                                    <td>{{ p.marque }}</td>
+                                    <td>{{ p.type }}</td>
+                                    <td>{{ p.qte }}</td>
+                                    <td>{{ p.prix }}</td>
+                                    <td><a class="btn btn-sm btn-outline-primary" href="{% url 'modifierproduit' produit_id=p.id %}"><i class="fas fa-edit"></i></a></td>
+                                    <td><a class="btn btn-sm btn-danger" href="{% url 'supprimerproduit' produit_id=p.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+{% endblock %}

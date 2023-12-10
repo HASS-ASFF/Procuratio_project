@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'content' %}
+	<section class="section-md bg-periglacial-blue">
+              <div class="shell"><a class="link link-primary link-return" href="{% url 'index' %}">Back</a>
+                <article class="post-single">
+                  <div class="post-single-header" style="background-image: url('{% static 'articles/post-single-1-1170x600.jpg' %}');">
+                    <div class="post-single-header-content">
+                      <p class="post-single-title">Top 7 Produits de Rasage</p>
+                      <ul class="post-single-meta">
+                        <li><a href="#"><span class="icon icon-xxs fa fa-heart"></span><span>24</span></a></li>
+                        <li><span class="icon icon-xxs fa fa-eye"></span><span>132</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="post-single-body">
+                    <h3>Top 7 Produits de Rasage</h3>
+                      <p>La bonne crème à raser peut faire la différence entre une peau saine et une peau tourmentée par les poils incarnés. Dans le monde du rasage, le choix des produits appropriés est essentiel pour une expérience de rasage agréable et sans irritations.</p>
+                      <p><b>Crème à Raser Traditionnelle :</b> Rien ne bat la simplicité d'une bonne crème à raser classique. Les formules traditionnelles offrent une lubrification exceptionnelle, facilitant la glisse du rasoir tout en hydratant la peau.</p>
+                      <p><b>Gel de Rasage Apaisant :</b> Pour ceux ayant une peau sensible, un gel de rasage apaisant peut être la clé. Enrichi en ingrédients apaisants comme l'aloe vera, il calme la peau tout en facilitant le rasage, minimisant les rougeurs et les irritations.</p>
+                      <p><b>Mousse à Raser Hydratante :</b> Une mousse riche et hydratante peut transformer le rasage en un moment de soin. Elle enveloppe les poils, les adoucit, et laisse la peau nourrie et lisse après chaque rasage.</p>
+                      <p><b>Huile de Pré-Rasage :</b> L'huile de pré-rasage est un secret bien gardé. Elle prépare la peau en assouplissant les poils et en créant une barrière protectrice, rendant le rasage plus confortable et réduisant les risques d'irritations.</p>
+                      <p><b>Crème de Rasage Transparente :</b> Les crèmes de rasage transparentes sont idéales pour ceux qui aiment voir exactement où passe la lame. Elles offrent une visibilité optimale tout en fournissant une couche protectrice pour éviter les irritations.</p>
+                      <p><b>Savon à Barbe Traditionnel :</b> Pour les amateurs du rituel du rasage traditionnel, un savon à barbe de qualité peut créer une mousse riche et crémeuse, assurant un rasage de près tout en nourrissant la peau.</p>
+                      <p><b>Crème à Raser Naturelle :</b> Les adeptes de produits naturels peuvent opter pour une crème à raser bio ou naturelle. Souvent formulées avec des ingrédients doux, elles offrent une alternative respectueuse de la peau et de l'environnement.</p>
+
+                    <h3>Conclusion</h3>
+                    <p>Choisir le bon produit de rasage est une étape cruciale pour entretenir une peau saine et éviter les désagréments du rasage. Que vous préfériez la tradition d'une crème classique, l'apaisement d'un gel, ou l'efficacité d'une huile pré-rasage, l'essentiel est de trouver ce qui convient le mieux à votre type de peau et à vos préférences personnelles. Avec ces options variées, le rasage peut devenir un moment de soin et de plaisir plutôt qu'une corvée.</p>
+                  </div>
+                </article>
+              </div>
+            </section>
+{% endblock %}

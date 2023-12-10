@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}<title>Procuratio - Panier</title>{% endblock %}
+
+{% load static %}
+
+{% load mathfilters %}
+
+{% block 'content'%}
+
+<!-- Shopping Cart Section Begin -->
+<section class="section-lg bg-periglacial-blue text-center">
+    <div class="container">
+        <div class="row">
+            <div class="cell-xs-12">
+                 <h2>Panier</h2>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="section-lg bg-periglacial-blue">
+                    <table id="tableau" class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product_id,item in items.items %}
+                                
+                            <tr>
+                                <td class="product__cart__item">
+                                    <div style="display:flex; align-items:space-between;" class="product__cart__item__pic">
+                                        <img style="width:30%;" src="{{item.image}}" alt="">
+                                        <h6 style="margin-top:14px;">{{item.title}}</h6>
+                                    </div>
+                                    
+                                </td>
+                                <td class="quantity__item">
+                                    <div style="display:flex; align-items:space-between;" class="quantity">
+                                        <div class="pro-qty-2">
+                                            <input type="text"  class="product-qty-{{product_id}}" value="{{item.qty}}">
+                                        </div>
+                                        <div style="margin-left:10px;" class="update-item" data-item="{{product_id}}"><i class="fa fa-refresh"></i></div>
+                                    </div>
+                                   
+                                </td>
+                                <td class="cart__price">{{ item.price }} euros</td>
+                                <td class="cart__price">{{    item.price|mul:item.qty }} euros</td>
+                                <td class="delete-item" data-item="{{product_id}}" ><i class="fa fa-close"></i></td>
+                            </tr>
+                                
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cell-xs-6 cell-md-3">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn">
+                            <a class="btn btn-primary" href="{% url 'produitsC' %}">Commander un autre</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn">
+                            <a href="{% url 'checkout' %}" class="btn btn-danger">Valider la transaction</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 card-service">
+                <div class="shell">
+                    <h6>Code fidelité</h6>
+                    {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                        <input type="text"  class="fidelity-code-{{ request.user.id }}"  placeholder="Coupon code">
+
+                        <button class="fidelity-code" data-fidelity="{{ request.user.id }}" type="submit">Apply</button>
+
+                </div>
+                <div class="shell">
+                    <h6>Total achat</h6>
+                    <ul>
+                        <li>Subtotal <span>{{totalitems}}</span></li>
+                        <li>Total <span>{{total_amt}}</span></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+
+{% endblock %}

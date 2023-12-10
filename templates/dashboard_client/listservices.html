@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block 'title' %}<title>Procuratio | Services</title>{% endblock  %}
+
+{% block 'content' %}
+
+    <section class="section-lg bg-periglacial-blue text-center">
+              <div class="shell">
+                <div class="range range-sm-center range-50">
+                  <div class="cell-xs-12">
+                    <h2>Nos SERVICES</h2>
+                    <div class="p text-width-medium">
+                      <p class="big">Découvrez une expérience beauté exceptionnelle avec les services de notre salon Procuratio !</p>
+                    </div>
+                  </div>
+                  <div class="cell-xs-12">
+
+                {% for s in services %}
+                      <div class="cell-xs-6 cell-md-3">
+                        <article class="card-service">
+
+                            <img class="card-service-image" src="{{ s.photo.url }}" alt="" width="70" height="62"/>
+                          <p class="card-service-title">{{ s.nom }}</p>
+                          <p class="card-service-price"><small>€</small>{{ s.prix }}
+                          </p><a class="btn btn-sm card-service-control" href="{% url 'prendre_rendezvous' s.id %}">Réserver</a>
+
+                        </article>
+                      </div>
+                {% endfor %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+{% endblock %}

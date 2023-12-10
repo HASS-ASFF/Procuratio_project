@@ -1,0 +1,61 @@
+{% extends 'dashboard_admin/index.html' %}
+
+{% block 'title' %}<title>ProcuratioAdmin - Clients</title>{% endblock %}
+
+{% load custom_filters %}
+
+{% block 'content' %}
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Listes Transactions</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Id Transaction</th>
+                                    <th scope="col">Client</th>
+                                    <th scope="col">Montant total</th>
+                                    <th scope="col">Type de paiement</th>
+                                    <th scope="col">Liste des produits</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for t in transactions %}
+                            <tr>
+                                <td>{{ t.id }}</td>
+                                <td>{{ t.id_client }}</td>
+                                <td>{{ t.MT }}</td>
+                                <td>{{ t.MP }}</td>
+
+
+                                    <td>
+
+                                    {% for attribute_value, products in t.produits_list|group_by_attribute:"title" %}
+                                    <strong>{{ attribute_value }}</strong>
+                                    <ul>
+                                        {% for product in products %}
+                                            <li>
+                                                <p>Qty: {{ product.qty }}</p>
+                                            </li>
+                                            <li>
+                                                <p>Price: {{ product.price }}</p>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endfor %}
+
+
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

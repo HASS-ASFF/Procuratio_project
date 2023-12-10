@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'content' %}
+	<section class="section-md bg-periglacial-blue">
+              <div class="shell"><a class="link link-primary link-return" href="{% url 'index' %}">Back</a>
+                <article class="post-single">
+                  <div class="post-single-header" style="background-image: url('{% static 'articles/post-single-1-1170x600.jpg' %}');">
+                    <div class="post-single-header-content">
+                      <p class="post-single-title">Quelle coupe de cheveux vous convient ?</p>
+                      <ul class="post-single-meta">
+                        <li><a href="#"><span class="icon icon-xxs fa fa-heart"></span><span>24</span></a></li>
+                        <li><span class="icon icon-xxs fa fa-eye"></span><span>132</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="post-single-body">
+                    <h3>Quelle coupe de cheveux vous convient</h3>
+                    <p>Les différentes personnes ont des formes de visage différentes. Et ce n'est pas vous, mais la forme de votre visage qui détermine si une coupe de cheveux particulière vous ira bien. Examinons quelques suggestions en fonction des formes de visage courantes.</p>
+                    <p><b>Visage rond :</b>
+Si votre visage est plutôt rond, optez pour des coupes qui créent l'illusion de longueur. Des coiffures dégradées avec des mèches encadrant le visage sont une excellente option. Les côtés dégagés et une longueur supplémentaire sur le dessus peuvent également aider à affiner visuellement la forme du visage.</p>
+                    <p><b>Visage rond :</b> Pour adoucir les contours d'un visage rond, optez pour des coupes qui créent une illusion de longueur. Les coupes dégradées et les coiffures asymétriques sont idéales. Évitez les coupes trop courtes, car elles peuvent accentuer la rondeur de votre visage.</p>
+                    <p><b>Visage carré :</b> Pour un visage carré, privilégiez des coupes qui adoucissent les angles. Des coiffures texturées, des franges latérales et des coupes dégradées peuvent aider à créer une apparence plus douce et féminine</p>
+                    <p><b>Visage en cœur :</b> Si votre visage a une forme en cœur avec un front plus large et un menton pointu, optez pour des coiffures qui équilibrent ces proportions. Les coupes dégradées et les coiffures volumineuses autour du menton peuvent être flatteuses.</p>
+                      <p><b>Visage rectangulaire :</b> Pour un visage rectangulaire, l'objectif est souvent de créer une apparence plus douce. Choisissez des coupes qui ajoutent du volume sur les côtés, comme des coupes ondulées ou des coiffures texturées.</p>
+                      <h3>Conclusion</h3>
+                    <p>En fin de compte, la confiance en soi est la clé pour arborer n'importe quelle coupe de cheveux avec style. Consultez votre coiffeur pour des conseils personnalisés en fonction de la texture de vos cheveux et de votre style de vie.</p>
+                  </div>
+                </article>
+              </div>
+            </section>
+{% endblock %}

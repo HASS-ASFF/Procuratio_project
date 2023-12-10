@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}<title>Mes Réservations</title>{% endblock %}
+{% load static %}
+{% block 'content' %}
+
+<section class="section-lg bg-periglacial-blue text-center">
+<div class="shell">
+<div class="range range-sm-center range-50">
+<div class="cell-xs-12">
+    <h2>Mes Réservations</h2>
+</div>
+    {% if reservations %}
+        <div class="cell-xs-12">
+         <div class="range range-30">
+            {% for reservation in reservations %}
+                <div class="cell-xs-6 cell-md-3">
+                        <article class="card-service">
+                            {% if reservation.service.photo %}
+                            <img class="card-service-image" src="{{ reservation.service.photo.url }}" alt="" width="70" height="62"/>
+                            {% endif %}
+                <p class="card-service-title">Réservation : {{ reservation.id }}</p>
+                <p class="card-service-title">{{ reservation.service.nom }} - {{ reservation.date }}</p>
+                    </article>
+                </div>
+            {% endfor %}
+         </div>
+        </div>
+    {% else %}
+        <p>Aucune réservation pour le moment.</p>
+    {% endif %}
+</div>
+</div>
+</section>
+{% endblock %}

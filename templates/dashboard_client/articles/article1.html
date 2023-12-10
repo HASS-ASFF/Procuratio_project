@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'content' %}
+	<section class="section-md bg-periglacial-blue">
+              <div class="shell"><a class="link link-primary link-return" href="{% url 'index' %}">Back</a>
+                <article class="post-single">
+                  <div class="post-single-header" style="background-image: url('{% static 'articles/post-single-1-1170x600.jpg' %}');">
+                    <div class="post-single-header-content">
+                      <p class="post-single-title">Visiter un barbier</p>
+                      <ul class="post-single-meta">
+                        <li><a href="#"><span class="icon icon-xxs fa fa-heart"></span><span>24</span></a></li>
+                        <li><span class="icon icon-xxs fa fa-eye"></span><span>132</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="post-single-body">
+                    <h3>Avantages de visiter un barbier</h3>
+                    <p>Un barbier sait comment couper les cheveux des hommes. Si vous êtes comme la plupart des hommes de nos jours, vous allez probablement dans un salon de coiffure mixte. La plupart du temps, vous ressortirez de ces endroits avec une coupe de cheveux moyenne. Parfois, une telle coupe de cheveux peut sembler décente pendant la première semaine ou ainsi, mais elle se transformera ensuite en une horrible coupe en bol. Le problème est que beaucoup de personnes qui travaillent dans les salons ne sont pas des barbiers formés. Ce sont des cosmétologues. La différence entre les deux peut faire la différence entre une coupe de cheveux qui a l'air bien et une excellente.</p>
+                    <p>Un barbier est formé pour couper avec des tondeuses, l'outil principal pour couper les cheveux des hommes. Les cosmétologues, en revanche, sont formés pour utiliser des ciseaux. Leur formation est également axée sur la coiffure des femmes. Ils sont des experts en stylisme, coloration et permanente - des choses dont un homme n'a pas besoin. C'est pourquoi, lorsque vous demandez à la styliste mignonne d'un salon mixte d'utiliser le numéro 2 sur les tondeuses, vous repartez avec une mauvaise coupe de cheveux. Elle n'est probablement pas bien versée dans l'utilisation de cet outil. Mais un barbier peut manier les tondeuses avec finesse. Le barbier est aussi un gars qui a quelques histoires intéressantes et qui peut être un auditeur parfait. Vous ne rencontrerez pas de coiffeur avec une telle compétence dans les autres salons de nos jours.</p>
+                    <h3>Conclusion</h3>
+                    <p>
+À chaque fois que vous allez chez le barbier, vous vous sentirez simplement plus viril. Il est difficile de dire ce que c'est vraiment. Peut-être est-ce la combinaison de l'odeur des lotions capillaires et de l'atmosphère totalement masculine. Mais surtout, c'est la conscience de la tradition des salons de coiffure pour hommes. Les salons de coiffure sont des lieux de continuité ; ils ne changent pas avec les évolutions de la culture. Les lieux et les barbiers ressemblent à ce qu'ils étaient quand votre père se faisait couper les cheveux. C'est une expérience directe sans aucun des accessoires de l'ère moderne. Pas d'épilation, de soins du visage, de mèches ou de rendez-vous. Juste d'excellentes coupes de cheveux et d'excellentes conversations.</p>
+                  </div>
+                </article>
+              </div>
+            </section>
+{% endblock %}

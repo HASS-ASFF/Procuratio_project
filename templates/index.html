@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block 'title' %}<title>Procuratio | Acceuil</title>{% endblock  %}
+
+
+{% block 'content' %}
+
+<section class="jumbotron-custom jumbotron-custom-3 bg-white bg-image bg-image-custom bg-image-center" style="background-image: url({% static 'images/home-three-1-1920x800.jpg' %});">
+        <div class="jumbotron-custom-content text-center">
+          <div class="shell">
+              <div class="brand-desktop"><img src="{% static 'images/logo procuratio.png' %}" alt="" width="250" height="250"/>
+              </div>
+            <div class="range range-sm-center">
+              <div class="cell-sm-9 cell-md-8 cell-lg-7">
+                <p class="large">Découvrez une expérience beauté exceptionnelle avec les services de notre salon Procuratio ! De la coiffure aux soins capillaires, offrez-vous le meilleur de la beauté dans notre établissement. Laissez nos experts en coiffure vous sublimer et révéler votre nouvelle allure éblouissante.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section class="section-xl bg-periglacial-blue text-center">
+              <div class="shell">
+                <h2>Nos Coiffeurs</h2>
+                <div class="p text-width-medium">
+                  <p class="big">Nous employons uniquement des barbiers hautement qualifiés qui ne sont pas seulement des professionnels, mais qui apprécient également maintenir l'atmosphère d'un salon de coiffure classique.</p>
+                </div>
+              </div>
+
+              <div class="shell">
+                <div class="range range-30">
+                  <div class="cell-sm-6 cell-md-4 height-fill">
+                    <div class="thumbnail-card"><img class="thumbnail-card-image" src="{% static 'coiffeurs/lester-brito-rivas.jpg' %}" alt="" width="370" height="310"/>
+                      <div class="thumbnail-card-body">
+                        <p class="thumbnail-card-header" data-toggle="modal" data-target="#modalWindow">Lester brito</p>
+                        <div class="thumbnail-card-text">
+                          <p>M. Lester est le fondateur et propriétaire de notre salon de coiffure.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell-sm-6 cell-md-4 height-fill">
+                    <div class="thumbnail-card"><img class="thumbnail-card-image" src="{% static 'coiffeurs/claudie-parent.jpg' %}" alt="" width="370" height="310"/>
+                      <div class="thumbnail-card-body">
+                        <p class="thumbnail-card-header" data-toggle="modal" data-target="#modalWindow">Claudie parent</p>
+                        <div class="thumbnail-card-text">
+                          <p>Claudie apporte une approche détaillée et méticuleuse à la coiffure.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell-sm-6 cell-md-4 height-fill">
+                    <div class="thumbnail-card"><img class="thumbnail-card-image" src="{% static 'coiffeurs/vanessa-veilleux.jpg' %}" alt="" width="370" height="310"/>
+                      <div class="thumbnail-card-body">
+                        <p class="thumbnail-card-header" data-toggle="modal" data-target="#modalWindow">Vanessa veilleux</p>
+                        <div class="thumbnail-card-text">
+                          <p>Vanessa a plusieurs années d'expérience dans l'industrie de la coiffure pour hommes/femmes.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </section>
+
+    <section class="section-lg bg-periglacial-blue text-center">
+              <div class="shell">
+                <div class="range range-sm-center range-75">
+                  <div class="cell-xs-12">
+                    <h2>Nos articles</h2>
+                    <div class="p text-width-medium">
+                      <p class="big">Le salon de coiffure n'est pas seulement un endroit où l'on peut obtenir une coupe de cheveux de première classe. Nos barbiers écrivent également des articles intéressants sur tout ce qui concerne leur domaine d'intérêt.</p>
+                    </div>
+                  </div>
+                  <div class="cell-xs-12">
+                    <div class="range range-30">
+                      <div class="cell-sm-6 cell-md-4">
+                        <article class="post-block"><img class="post-block-image" src="{% static 'articles/blog-3-370x250.jpg' %}" alt="" width="370" height="250"/>
+                          <div class="post-block-body">
+                            <p class="post-block-title"><a href="{% url 'articles' article_id=1%}">Visiter un barbier</a></p>
+                            <div class="post-block-text">
+                              <p>Un barbier sait comment couper les cheveux des hommes. Si vous êtes comme la plupart des hommes de nos jours, vous êtes probablement enclin à <a href="{% url 'articles' article_id=1%}"></a></p>
+                            </div>
+                            <ul class="post-block-meta">
+                              <li><span class="icon icon-xxs icon-primary fa fa-heart"></span><span>15</span></li>
+                              <li><span class="icon icon-xxs icon-primary fa fa-eye"></span><span>132</span></li>
+                            </ul>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="cell-sm-6 cell-md-4">
+                        <article class="post-block"><img class="post-block-image" src="{% static 'articles/blog-4-370x250.jpg' %}" alt="" width="370" height="250"/>
+                          <div class="post-block-body">
+                            <p class="post-block-title"><a href="{% url 'articles' article_id=2%}">Quelle coupe de cheveux vous convient</a></p>
+                            <div class="post-block-text">
+                              <p>Les différentes personnes ont des formes de visage différentes. Et ce n'est pas vous, mais la forme de votre visage qui détermine si<a href="{% url 'articles' article_id=2%}"></a></p>
+                            </div>
+                            <ul class="post-block-meta">
+                              <li><span class="icon icon-xxs icon-primary fa fa-heart"></span><span>24</span></li>
+                              <li><span class="icon icon-xxs icon-primary fa fa-eye"></span><span>90</span></li>
+                            </ul>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="cell-sm-6 cell-md-4">
+                        <article class="post-block"><img class="post-block-image" src="{% static 'articles/blog-5-370x250.jpg' %}" alt="" width="370" height="250"/>
+                          <div class="post-block-body">
+                            <p class="post-block-title"><a href="{% url 'articles' article_id=3%}">Top 7 Produits de Rasage</a></p>
+                            <div class="post-block-text">
+                              <p>La bonne crème à raser peut faire la différence entre une peau saine et une peau tourmentée par les poils incarnés.<a href="{% url 'articles' article_id=3%}"></a></p>
+                            </div>
+                            <ul class="post-block-meta">
+                              <li><span class="icon icon-xxs icon-primary fa fa-heart"></span><span>12</span></li>
+                              <li><span class="icon icon-xxs icon-primary fa fa-eye"></span><span>150</span></li>
+                            </ul>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+{% endblock %}

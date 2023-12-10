@@ -1,0 +1,39 @@
+{% extends 'dashboard_admin/index.html' %}
+
+{% block 'title' %}<title>ProcuratioAdmin - Services</title>{% endblock %}
+
+{% block 'content' %}
+
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Listes Services</h6>
+                        <td><a class="btn btn-sm btn-outline-primary" href="{% url 'ajouterservice' %}">Ajouter un service</a></td>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Prix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               {% for s in services %}
+                                <tr>
+                                    <td>{{ s.nom }}</td>
+                                    <td>{{ s.type }}</td>
+                                    <td>{{ s.prix }}</td>
+                                    <td><a class="btn btn-sm btn-outline-primary" href="{% url 'modifierservice' service_id=s.id %}"><i class="fas fa-edit"></i></a></td>
+                                    <td><a class="btn btn-sm btn-danger" href="{% url 'supprimerservice' service_id=s.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

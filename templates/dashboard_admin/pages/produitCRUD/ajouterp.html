@@ -1,0 +1,27 @@
+{% extends 'dashboard_admin/index.html' %}
+
+{% load static %}
+
+{% block 'content' %}
+{% load crispy_forms_tags %}
+<div class="container-fluid pt-4 px-4">
+<div class="bg-light  rounded p-4">
+
+        <form method="POST" data-url="{% url 'ajouterproduit' %}">
+            {% csrf_token %}
+            <div class="d-flex align-items-center justify-content-between mb-4">
+               <h5 class="modal-title">Ajouter un produit</h5>
+            </div>
+            <div class="range range-sm-center range-50">
+              {{ form|crispy }}
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-outline-primary">Valider</button>
+               <a href="{% url 'productlist' %}" class="btn btn-danger">Annuler</a>
+            </div>
+
+         </form>
+</div>
+</div>
+
+{% endblock %}

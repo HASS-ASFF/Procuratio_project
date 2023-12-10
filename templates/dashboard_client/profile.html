@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}<title>Procuratio | Profile</title>{% endblock %}
+
+{% block 'content' %}
+
+<section class="section-xl bg-periglacial-blue text-center">
+
+{% if userForm.errors %}
+    {% for field in userForm %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in userForm.errors.as_data %}
+
+        <div class="alert alert-danger">
+            <strong>{{ error | escape}}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <div class="app-title">
+        <div>
+            <h3>
+                <i class="fa fa-user fa-lg"></i>
+                Personnalisation de votre profil
+            </h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="shell">
+
+        {% if messages %}
+            {% for message in messages %}
+
+        <div class="alert alert-{% if message.tags == error %}danger{% else %}{{message.tags}} {% endif %} alert-dismissible show" role="alert">
+            <strong>Infos!</strong> {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+    <form action="{% url 'profile' %}" method="POST" class="rd-mailform" enctype="multipart/form-data" data-url="{% url 'profile' %}">
+        {% csrf_token %}
+        <div class="inset-sm-25  group-sm-justify group-middle">
+            <div class="inset-sm-25 col-md-1">
+                <div class="profil-photo align-content-center flex-wrap">
+                {% if request.user.image_profil %}
+                <img style="border-radius:100px; border : 1px solid #000;" width="160" height="160" src="{{request.user.image_profil.url}}" class="profil-pic" alt="">
+                {% else %}
+
+                <img style="border-radius:100px; border : 1px solid #000 " width="160" height="160" src="{% static 'img/default_img.webp' %}" class="profil-pic" alt="">
+                <label>Charger une nouvelle photo de profil</label>
+                {% endif %}
+                <div class="form-group">
+                    {% if request.user.image_profil %}
+                        <label>Charger une autre photo de profil</label>
+                    {% endif %}
+                    {{userForm.image_profil}}
+                </div>
+
+            </div>
+            </div>
+            <div class="inset-sm-25">
+                <div class="form-group">
+                    <label  for="username">Nom d'utilisateur</label>
+                    {{userForm.username}}
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                        {{userForm.email}}
+                </div>
+                <br>
+                <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                             <input type="password" value="*************" placeholder="" disabled="disabled" class="form-control">
+                             <a class="btn btn-primary py-3 w-50 mb-2" href="{% url 'resetPassword' %}">Changer votre mot de passe</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row group-sm  group-middle">
+            <div class="col-md-12 ">
+                <input type="submit"  value="Mettre à jour" style="border-radius: 25px; border : 1px solid #014d55 ; color: #014d55;" class="submit-profil float-right btn show-img-qrpers">
+            </div>
+        </div>
+    </form>
+
+</div>
+</section>
+
+    <script>
+
+    function actualiserPage() {
+        location.reload(true);
+    }
+
+    // Attachez cette fonction au formulaire
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector('.rd-mailform');
+        form.addEventListener('submit', function () {
+            actualiserPage();
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+
+      {% block 'title' %}{% endblock %}
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Mono:300,300italic,400,700%7CArvo:400,700">
+    <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+		<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="{% static 'images/ie8-panel/warning_bar_0000_us.jpg'%} " border="0" height="42" width="820"></a></div>
+    <script src="{% static 'js/html5shiv.min.js'%} "></script>
+		<![endif]-->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+  <style>
+      a{
+          text-decoration:none!important;
+      }
+
+  </style>
+
+    <div class="page">
+      <header class="page-header">
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar--is-stuck">
+            <div class="rd-navbar-inner">
+                <div class="rd-navbar-panel">
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+
+                </div>
+              <div class="rd-navbar-nav-wrap">
+                <div class="rd-navbar-nav-inner">
+
+                  <ul class="rd-navbar-nav">
+                      <li class="active coltext"><a href="{% url 'index' %}">Acceuil</a></li>
+                      <li class="active"><a href="{% url 'produitsC' %}">Produits</a></li>
+                      <li class="active"><a href="{% url 'servicesC' %}">Services</a></li>
+                      <li class="active"><a href="{% url 'user_reservations' %}">Mes Réservations</a></li>
+                    </li>
+
+                      <li style="float: right;" class="active coltext"><a href="{% url 'viewpanier' %}">
+                          <i style="padding-right: 2px;" class="fas fa-shopping-cart" id="cart-icon"></i><a class="price cart-list">{{ totalitems }}</a>
+                      </a>
+                      </li>
+                      <li style="float: right;" class="active coltext"><a href="{% url 'index' %}"><img class="rounded-circle me-lg-2" src="{{ request.user.image_profil.url }}" alt="" style="width: 20px; height: 20px;">
+                      {{ request.user.username }}</a>
+
+                      <ul class="rd-navbar-megamenu">
+                        <li>
+                         <ul class="rd-megamenu-list">
+                            <li><a href="{% url 'profile' %}">Mes informations</a></li>
+                             <li><a href="{% url 'fidelite' %}">Programme de fidélité</a></li>
+                            <li><a href="{% url 'historique' %}">Historique d'achats</a></li>
+                            <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+
+                </ul>
+
+              </div>
+              </div>
+
+            </div>
+          </nav>
+        </div>
+      </header>
+    </div>
+
+  {% block 'content' %}
+    {% endblock  %}
+
+<script src="{% static 'fullcalendar-6.1.10/fullcalendar-6.1.10/dist/index.global.min.js' %}"></script>
+<script src="{% static 'fullcalendar-6.1.10/fullcalendar-6.1.10/dist/index.global.js' %}"></script>
+  <script src="{% static 'js/core.min.js' %}"></script>
+  <script src="{% static 'js/script.js' %} "></script>
+  <script src="{% static 'js/cart.js' %}"></script>
+  </body>
+</html>

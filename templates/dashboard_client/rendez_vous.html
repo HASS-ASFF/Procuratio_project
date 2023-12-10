@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'title' %}<title>Procuratio | Rendez-vous</title>{% endblock %}
+
+{% block 'content' %}
+
+
+<section class="section-xl bg-periglacial-blue text-center">
+<div id="calendrier"></div>
+</section>
+
+<section class="section-xl bg-periglacial-blue text-center">
+    <h3>Réserver</h3>
+
+    <form action="{% url 'create_reservation' %}" method="post" enctype="multipart/form-data" id="reservation-form">
+        {% csrf_token %}
+
+        <label for="selected-date">Date sélectionnée:</label>
+        <input type="text" name="selected-date" id="selected-date" readonly>
+
+        <label for="service-name">Nom du service:</label>
+        <input type="text" name="service-name" id="service-name" value="{{ service }}" readonly>
+
+
+        <div class="row group-sm  group-middle">
+        <div class="col-md-12 ">
+        <input type="submit" value="Réserver cette date" style="border-radius: 25px; border : 1px solid #014d55 ; color: #014d55;" class="submit-profil float-right btn show-img-qrpers">
+        </div>
+        </div>
+
+    </form>
+
+</section>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var datesDisponibles = {{ dates_disponibles|safe }};
+        var calendarEl = document.getElementById('calendrier');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            selectable: true,
+            locale: 'fr',
+            select: function(info) {
+                var selectedDate = info.start;
+                var selectedDateStr = selectedDate.getFullYear() + '-' +
+                                     ('0' + (selectedDate.getMonth() + 1)).slice(-2) + '-' +
+                                     ('0' + selectedDate.getDate()).slice(-2);
+
+                if (datesDisponibles.includes(selectedDateStr)) {
+
+                    document.getElementById('selected-date').value = selectedDateStr;
+
+                    document.getElementById('reservation-form').style.display = 'block';
+                } else {
+                    // La date sélectionnée n'est pas disponible
+                    console.log('Date non disponible:', selectedDateStr);
+                }
+                calendar.unselect();
+            },
+            datesSet: function(info) {
+                //
+            },
+            events: datesDisponibles.map(function(date) {
+                return {
+                    title: 'Dispo',
+                    start: date,
+                    allDay: true,
+                    color: 'green',
+                };
+            })
+        });
+
+        calendar.render();
+    });
+    </script>
+
+<style>
+    #calendrier {
+  max-width: 500px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'content' %}
+
+    <section class="section-lg bg-periglacial-blue text-center">
+    <div class="container">
+        <div class="row">
+            <div class="cell-xs-12">
+                <h2>Fidelité programme</h2>
+            </div>
+
+            <div class="section-lg bg-periglacial-blue">
+            {% if fidelity_code %}
+                 <div class="section-lg bg-periglacial-blue">
+                    <table id="tableau" class="table">
+                        <thead>
+                            <tr>
+                                <th>Statut fidelité</th>
+                                <th>Code</th>
+                                <th>Nombre de code consommé</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Activé</td>
+                                <td>{{ fidelity_code }}</td>
+                                <td>{{ fidelity_count }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+            {% else %}
+                <p>Désolé vous bénéficiez pas du programme de fidélité, Effectuez un achat de +100 euros pour l'activer</p>
+            {% endif %}
+            </div>
+
+        </div>
+    </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'dashboard_admin/index.html' %}
+
+{% block 'title' %}<title>ProcuratioAdmin - Clients</title>{% endblock %}
+
+{% block 'content' %}
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Listes Clients</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Client</th>
+                                    <th scope="col">Programme fidelité</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for c in clients %}
+                                <tr>
+                                    <td>{{ c.id }}</td>
+                                    <td>{{ c.username }}</td>
+                                    <td>
+                                        {% if c.fidelity %}
+                                            Active
+                                        {% else%}
+                                            Non active
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% include 'base.html' %}
+
+{% block 'title' %}<title>Procuratio - Checkout</title>{% endblock %}
+{% load static %}
+{% load mathfilters %}
+{% block 'content'%}
+
+    <section class="section-lg bg-periglacial-blue text-center">
+    <div class="container">
+        <div class="row">
+            <div class="cell-xs-12">
+                <h2>Checkout</h2>
+            </div>
+
+            <div class="section-lg bg-periglacial-blue">
+                    <table id="tableau" class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product_id,item in items.items %}
+
+                            <tr>
+                                <td class="product__cart__item">
+                                    <div style="display:flex; align-items:space-between;" class="product__cart__item__pic">
+                                        <img style="width:10%;" src="{{item.image}}" alt="">
+                                        <h6 style="margin-top:14px;">{{item.title}}</h6>
+                                    </div>
+
+                                </td>
+                                <td class="quantity__item">
+                                    <div style="display:flex; align-items:space-between;" class="quantity">
+                                        <div class="pro-qty-2">
+                                            <input type="text"  class="product-qty-{{product_id}}" value="{{item.qty}}">
+                                        </div>
+                                        <div style="margin-left:10px;" class="update-item" data-item="{{product_id}}"><i class="fa fa-refresh"></i></div>
+                                    </div>
+
+                                </td>
+                                <td class="cart__price">{{ item.price }} DH</td>
+                                <td class="cart__price">{{    item.price|mul:item.qty }} euros</td>
+                                <td class="delete-item" data-item="{{product_id}}" ><i class="fa fa-close"></i></td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            <div class="section-xl bg-periglacial-blue text-center">
+                <form method="post" action="{% url 'checkout' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-floating mb-3" style="padding-bottom: 5px;">
+                        <label for="selected-date">client</label>
+                        <input type="text" name="client-id" id="client-id" value="{{ client }}" readonly>
+                    </div>
+
+
+                    <div class="form-floating mb-3" style="padding-bottom: 5px;">
+                     <label for="type-payment">Type de paiement</label>
+                        <select name="type-payment" id="type-payment">
+                            <option value="carte-bancaire">Carte Bancaire</option>
+                            <option value="especes">Espèces</option>
+                        </select>
+                    </div>
+
+                    <div class="form-floating mb-3" style="padding-bottom: 5px;">
+                        {% if fidelity %}
+                            <p>Code fidelité activé -30%</p>
+                        {% endif %}
+                        <label for="service-name">Montant total</label>
+                        <input type="text" name="total-amount" id="total-amount" value="{{ total_amt }}" readonly> euros
+                    </div>
+
+                    <div class="row group-sm  group-middle">
+                        <button type="submit" class="btn btn-primary">Valider la transaction</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

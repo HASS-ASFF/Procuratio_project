@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load custom_filters %}
+
+{% block 'content' %}
+
+    <section class="section-lg bg-periglacial-blue text-center">
+    <div class="container">
+        <div class="row">
+            <div class="cell-xs-12">
+                <h2>Historique d'achats</h2>
+            </div>
+
+            <div class="section-lg bg-periglacial-blue">
+                <table id="tableau" class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Montant total</th>
+                                <th>Type de paiement</th>
+                                <th>Liste des produits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for t in transactions %}
+                            <tr>
+                                <td>{{ t.id }}</td>
+                                <td>{{ t.MT }}</td>
+                                <td>{{ t.MP }}</td>
+                                 <td>
+
+                                   {% if t.produits_list %}
+                                    {% if t.produits_list|length > 1 %}
+                                        {% for attribute_value, products in t.produits_list|group_by_attribute:"title" %}
+                                            <h3>{{ attribute_value }}</h3>
+                                            <ul>
+                                                {% for product in products %}
+                                                    <li>
+                                                        <p>ID: {{ product.id }}</p>
+                                                        <p>Image: {{ product.image }}</p>
+                                                        <p>Qty: {{ product.qty }}</p>
+                                                        <p>Price: {{ product.price }}</p>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endfor %}
+                                    {% else %}
+                                        <ul>
+                                            <li>
+                                                <p>ID: {{ transactions.produits_list.0.id }}</p>
+                                                <p>Image: {{ transactions.produits_list.0.image }}</p>
+                                                <p>Qty: {{ transactions.produits_list.0.qty }}</p>
+                                                <p>Price: {{ transactions.produits_list.0.price }}</p>
+                                                <!-- Add other product details as needed -->
+                                            </li>
+                                        </ul>
+                                    {% endif %}
+                                {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    </section>
+{% endblock %}
